@@ -13,7 +13,5 @@ interface UserRepository : JpaRepository<User, Long> {
 
     fun existsByDocumentoIdentidad(documentoIdentidad: String): Boolean
 
-    fun findByRol(rol: String): List<User>
-
-    fun findByActivoTrue(): List<User>
+    fun findByRoles_Nombre(nombre: String): List<User>
 }

@@ -12,7 +12,6 @@ fun User.toResponse(): UserResponse = UserResponse(
     direccion = direccion,
     fechaNacimiento = fechaNacimiento,
     contactoEmergencia = contactoEmergencia,
-    rol = rol,
-    activo = activo,
+    roles = roles.map { it.nombre }.sorted(),
     creadoEn = creadoEn
 )

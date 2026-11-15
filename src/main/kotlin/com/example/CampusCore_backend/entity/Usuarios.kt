@@ -14,7 +14,7 @@ class User(
     @Column(nullable = false, unique = true, length = 255)
     var correo: String = "",
 
-    @Column(name = "password_hash", nullable = false, length = 100)
+    @Column(name = "password_hash", nullable = false, length = 255)
     var passwordHash: String = "",
 
     @Column(nullable = false, length = 100)
@@ -38,15 +38,16 @@ class User(
     @Column(name = "contacto_emergencia", length = 255)
     var contactoEmergencia: String? = null,
 
-    // Opcionales recomendados:
-    @Column(nullable = false, length = 20)
-    var rol: String = "ESTUDIANTE",
-
-    @Column(nullable = false)
-    var activo: Boolean = true,
-
     @Column(name = "creado_en", updatable = false)
-    var creadoEn: OffsetDateTime? = null
+    var creadoEn: OffsetDateTime? = null,
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "usuario_roles",
+        joinColumns = [JoinColumn(name = "usuario_id")],
+        inverseJoinColumns = [JoinColumn(name = "rol_id")]
+    )
+    var roles: MutableSet<Role> = mutableSetOf()
 ) {
     @PrePersist
     fun prePersist() {

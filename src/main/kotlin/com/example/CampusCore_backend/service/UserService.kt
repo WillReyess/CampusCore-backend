@@ -71,14 +71,6 @@ class UserService(
         return userRepository.save(user).toResponse()
     }
 
-    @Transactional
-    @PreAuthorize("hasRole('ADMIN')")
-    fun deactivate(id: Long) {
-        val user = getEntity(id)
-        user.activo = false
-        userRepository.save(user)
-    }
-
     private fun getEntity(id: Long): User =
         userRepository.findByIdOrNull(id)
             ?: throw NoSuchElementException("Usuario con id $id no encontrado")

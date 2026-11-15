@@ -7,7 +7,6 @@ import com.example.CampusCore_backend.service.UserService
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
@@ -39,10 +38,4 @@ class UserController(
         @PathVariable id: Long,
         @Valid @RequestBody request: UpdateUserRequest
     ): UserResponse = userService.update(id, request)
-
-    @PatchMapping("/{id}/deactivate")
-    fun deactivate(@PathVariable id: Long): ResponseEntity<Void> {
-        userService.deactivate(id)
-        return ResponseEntity.noContent().build()
-    }
 }

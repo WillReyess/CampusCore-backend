@@ -13,7 +13,6 @@ data class UserResponse(
     val direccion: String?,
     val fechaNacimiento: LocalDate?,
     val contactoEmergencia: String?,
-    val rol: String,
-    val activo: Boolean,
+    val roles: List<String>,
     val creadoEn: OffsetDateTime?
 )

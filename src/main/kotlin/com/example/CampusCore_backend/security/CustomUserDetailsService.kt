@@ -1,6 +1,7 @@
 package com.example.CampusCore_backend.security
 
 import com.example.CampusCore_backend.repository.UserRepository
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -17,10 +18,11 @@ class CustomUserDetailsService(
         val user = userRepository.findByCorreo(correo)
             ?: throw UsernameNotFoundException("Credenciales inválidas")
 
+        val authorities = user.roles.map { SimpleGrantedAuthority("ROLE_${it.nombre}") }
+
         return User.withUsername(user.correo)
             .password(user.passwordHash)
-            .authorities("ROLE_${user.rol}")
-            .disabled(!user.activo)
+            .authorities(authorities)
             .build()
     }
 }

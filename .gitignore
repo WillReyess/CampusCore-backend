@@ -44,3 +44,6 @@ src/test/
 
 ### Entorno ###
 .env
+
+### Scripts de base de datos ###
+dataBaseScript/
