@@ -9,7 +9,7 @@ import java.time.OffsetDateTime
 class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Long = 0,
 
     @Column(nullable = false, unique = true, length = 255)
     var correo: String = "",

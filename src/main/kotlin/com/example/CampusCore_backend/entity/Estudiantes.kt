@@ -8,7 +8,7 @@ import jakarta.persistence.*
 class Estudiante(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Long = 0,
 
     @Column(name = "usuario_id", nullable = false, unique = true)
     var idUsuario: Long = 0,

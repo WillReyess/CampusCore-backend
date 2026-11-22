@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AuditoriaLogRepository : JpaRepository<AuditoriaLog, Long> {
     fun findByIdUsuario(idUsuario: Long): List<AuditoriaLog>
-    fun findByTablaAfectada(tablaAfectada: String): List<AuditoriaLog>
+    fun findByEntidadAfectada(entidadAfectada: String): List<AuditoriaLog>
 }

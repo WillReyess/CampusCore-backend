@@ -10,7 +10,7 @@ import jakarta.persistence.*
 class Carrera(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Long = 0,
 
     @Column(nullable = false, length = 150)
     var nombre: String = "",

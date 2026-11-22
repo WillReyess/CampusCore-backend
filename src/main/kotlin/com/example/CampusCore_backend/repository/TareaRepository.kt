@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TareaRepository : JpaRepository<Tarea, Long> {
     fun findByIdGrupo(idGrupo: Long): List<Tarea>
-    fun findByIdEvaluacion(idEvaluacion: Long): List<Tarea>
 }

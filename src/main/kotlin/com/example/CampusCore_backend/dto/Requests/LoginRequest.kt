@@ -1,4 +1,4 @@
-package com.example.CampusCore_backend.dto
+package com.example.CampusCore_backend.dto.Requests
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank

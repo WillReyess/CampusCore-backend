@@ -10,6 +10,6 @@ import java.time.OffsetDateTime
 interface EventoCalendarioRepository : JpaRepository<EventoCalendario, Long> {
     fun findByIdUsuario(idUsuario: Long): List<EventoCalendario>
     fun findByIdGrupo(idGrupo: Long): List<EventoCalendario>
-    fun findByTipo(tipo: TipoEvento): List<EventoCalendario>
+    fun findByTipoEvento(tipoEvento: TipoEvento): List<EventoCalendario>
     fun findByFechaInicioBetween(desde: OffsetDateTime, hasta: OffsetDateTime): List<EventoCalendario>
 }
