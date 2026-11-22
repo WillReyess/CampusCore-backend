@@ -48,7 +48,7 @@ class UserService(
         val correoNormalizado = request.correo.trim().lowercase()
         val documentoNormalizado = request.documentoIdentidad.trim().takeIf { it.isNotEmpty() }
 
-        // 1. Validaciones de negocio
+        // validacion de datos si estan existentes
         if (userRepository.existsByCorreo(correoNormalizado)) {
             throw IllegalArgumentException("El correo ya está registrado")
         }
@@ -59,10 +59,10 @@ class UserService(
         val carrera = carreraRepository.findByIdOrNull(request.idCarrera)
             ?: throw NoSuchElementException("La carrera especificada no existe")
 
-        val rolEstudiante = roleRepository.findByNombre("ESTUDIANTE")
+        val rolEstudiante = roleRepository.findByNombre("Estudiante")
             ?: throw NoSuchElementException("El rol ESTUDIANTE no está configurado")
 
-        // 2. Crear y guardar entidad User
+        // Crear y guardar entidad User
         val passwordCodificado = passwordEncoder.encode(request.password)
             ?: throw IllegalStateException("Error al codificar la contraseña")
 
@@ -82,7 +82,7 @@ class UserService(
 
         val usuarioGuardado = userRepository.save(nuevoUsuario)
 
-        // 3. Crear y guardar entidad Estudiante vinculada al usuario
+        // Crear y guardar entidad Estudiante vinculada al usuario
         val nuevoEstudiante = Estudiante(
             idUsuario = usuarioGuardado.id,
             idCarrera = carrera.id,

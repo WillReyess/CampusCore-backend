@@ -29,4 +29,10 @@ spring:
 
 jwt:
   secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATION:86400000}
+  expiration: ${JWT_EXPIRATION}
+
+superadmin:
+  email: ${SUPERADMIN_EMAIL}
+  nombre: ${SUPERADMIN_NAME}
+  apellido: ${SUPERADMIN_LASTNAME}
+  password: ${SUPERADMIN_PASSWORD}
